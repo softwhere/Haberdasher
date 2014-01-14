@@ -118,9 +118,7 @@ namespace Haberdasher.Tailors
 
             string keyParamName = this.FormatSqlParamName(key.Name);
             // if key is set by a trigger, retrieve the value using plsql block 
-            string plsql = String.Format(@"begin
-                                            {0} returning {1} into {2};
-                                           end;", sql, key.Name, keyParamName);
+            string plsql = String.Format("begin {0} returning {1} into {2}; end;", sql, key.Name, keyParamName);
 
             Debug.WriteLine(String.Format("Insert :: sql = {0}", plsql));
 
