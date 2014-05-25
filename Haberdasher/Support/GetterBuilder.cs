@@ -20,7 +20,14 @@ namespace Haberdasher.Support
 
 			var body = Expression.Property(Expression.Convert(model, classType), property.Name);
 
+
 			var convertedBody = Expression.Convert(body, typeof (object));
+            if (property.PropertyType.IsEnum)
+            {
+                // enums stored as int
+                var convertToInt = Expression.Convert(body, typeof(Int32));
+                convertedBody = Expression.Convert(convertToInt, typeof(object));
+            }
 
 			return Expression.Lambda<Func<object, object>>(convertedBody, model).Compile();
 		}

@@ -60,7 +60,13 @@ namespace Haberdasher
 				Alias = aliasAttr.Alias;
 			}
 
-			IsNumeric = property.PropertyType.IsNumber();
+            IsNumeric = property.PropertyType.IsNumber();
+
+            if (property.PropertyType.IsEnum)
+            {
+                // enums stored as numbers
+                IsNumeric = true;
+            }
 
 			var keyAttribute = property.GetCustomAttribute<KeyAttribute>();
 

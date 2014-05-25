@@ -26,4 +26,12 @@ namespace Haberdasher.Tests.TestClasses
         public NonIdentityKeyOracleHaberdashery() : base("SIMPLE_CLASSES", "OracleTest") { }
     }
 
+    /// <summary>
+    /// the EnumClassOracleHaberdashery is an Oracle Haberdashery to store EnumClass entities 
+    /// in the ENUM_CLASSES table using the connection string named "OracleTest"
+    /// </summary>
+    public class EnumClassOracleHaberdashery : OracleHaberdashery<EnumClass, int>
+    {
+        public EnumClassOracleHaberdashery() : base("ENUM_CLASSES", "OracleTest") { }
+    }
 }
